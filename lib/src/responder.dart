@@ -32,21 +32,12 @@ class _ResponderState extends State<Responder> {
   @override
   void initState() {
     super.initState();
-    _child = builder(context) ?? widget.childIfNull;
-  }
-
-  @override
-  void didUpdateWidget(Responder oldWidget) {
-    super.didUpdateWidget(oldWidget);
-    final newChild = builder(context);
-    if (_child != newChild)
-      setState(() {
-        _child = newChild;
-      });
   }
 
   @override
   Widget build(BuildContext context) {
+    if (_child == null) _child ==
+
     return _child;
   }
 }

@@ -9,3 +9,4 @@
 library responder;
 
 export 'src/stream_responder.dart';
+export 'src/responder.dart';
