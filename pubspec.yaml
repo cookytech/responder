@@ -1,8 +1,8 @@
 name: responder
-description: Stateful builders that accept null returns to avoid rebuild
-version: 0.0.1
-author:
-homepage:
+description: Stateful builders that accept null returns and avoid rebuild. Useful for listening to streams or providers for things other than builds. Like pushing routes, showing a dialog, etc
+version: 0.0.3
+repository: https://github.com/cookytech/responder
+homepage: https://github.com/cookytech/responder
 
 environment:
   sdk: ">=2.7.0 <3.0.0"
