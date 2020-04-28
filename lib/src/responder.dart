@@ -9,13 +9,11 @@
 import 'package:flutter/material.dart';
 
 class Responder extends StatefulWidget {
-  final Widget childIfNull;
   final WidgetBuilder builder;
 
   const Responder({
     Key key,
     @required this.builder,
-    @required this.childIfNull,
   }) : super(key: key);
 
   @override
@@ -27,17 +25,23 @@ class _ResponderState extends State<Responder> {
 
   WidgetBuilder get builder => widget.builder;
 
-  Widget get childIfNull => widget.childIfNull;
-
   @override
   void initState() {
     super.initState();
   }
 
   @override
-  Widget build(BuildContext context) {
-    if (_child == null) _child ==
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    final temp = builder(context);
+    if (temp != null)
+      _child = temp;
+    else if (_child == null) _child = Container();
+    setState(() {});
+  }
 
+  @override
+  Widget build(BuildContext context) {
     return _child;
   }
 }
