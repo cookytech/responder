@@ -10,3 +10,9 @@
 ## [0.0.3] - same
 
 * Updates the description
+
+## [0.0.4] - same
+
+* adds stream responder
+* adds stream responder example 
+* adds responder on testing
