@@ -1,20 +1,26 @@
-## [0.0.1] - 28th April, 2020
+## [0.0.6] - 29th April, 2019
+* fixes to responder
+* adds API documentation
+* adds responder example
+* changes to responder scope
 
-* Created the package
+## [0.0.5] - 28th April, 2020
+* adds responder on testing
 
-## [0.0.2] - same
-
-* Adds license
-* Adds repository
-
-## [0.0.3] - same
-
-* Updates the description
-
-## [0.0.4] - same
+## [0.0.4] - 28th April, 2020
 
 * adds stream responder
 * adds stream responder example 
 
-## [0.0.5] - same
-* adds responder on testing
+## [0.0.3] - 28th April, 2020
+
+* Updates the description
+
+## [0.0.2] - 28th April, 2020
+
+* Adds license
+* Adds repository
+
+## [0.0.1] - 28th April, 2020
+
+* Created the package
