@@ -1,4 +1,4 @@
-package in.cookytech.streamresponderexample
+package `in`.cookytech.streamresponderexample
 
 import io.flutter.embedding.android.FlutterActivity
 
