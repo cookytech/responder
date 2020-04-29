@@ -1,3 +1,6 @@
+## [0.1.0+hotfix.1] - 29th April, 2020
+* fixes link in documentation
+
 ## [0.1.0] - 29th April, 2020
 * adds detailed documentation and examples
 
