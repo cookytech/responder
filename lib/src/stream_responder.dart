@@ -1,11 +1,19 @@
+/*
+ * Copyright (c) 2020 Cookytech Technologies Private Limited.
+ * Licensed under the CTPL Shared Source License, Version 1.0 (the "License");
+ * You may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at:
+ * https://gist.github.com/raveesh-me/304e0ff87646204559f08b6c70d7dff3
+ */
+
 library responder;
 
 import 'dart:async';
 import 'package:flutter/material.dart';
 
-abstract class StreamResponderBase<T, S> extends StatefulWidget {
+abstract class _StreamResponderBase<T, S> extends StatefulWidget {
   /// Creates a [StreamResponderBase] connected to the specified [stream].
-  const StreamResponderBase({Key key, this.stream}) : super(key: key);
+  const _StreamResponderBase({Key key, this.stream}) : super(key: key);
 
   /// The asynchronous computation to which this builder is currently connected,
   /// possibly null. When changed, the current summary is updated using
@@ -53,12 +61,12 @@ abstract class StreamResponderBase<T, S> extends StatefulWidget {
   Widget build(BuildContext context, S currentSummary);
 
   @override
-  State<StreamResponderBase<T, S>> createState() =>
+  State<_StreamResponderBase<T, S>> createState() =>
       _StreamResponderBaseState<T, S>();
 }
 
 /// State for [StreamResponderBase].
-class _StreamResponderBaseState<T, S> extends State<StreamResponderBase<T, S>> {
+class _StreamResponderBaseState<T, S> extends State<_StreamResponderBase<T, S>> {
   StreamSubscription<T> _subscription;
   S _summary;
   Widget _child;
@@ -72,7 +80,7 @@ class _StreamResponderBaseState<T, S> extends State<StreamResponderBase<T, S>> {
   }
 
   @override
-  void didUpdateWidget(StreamResponderBase<T, S> oldWidget) {
+  void didUpdateWidget(_StreamResponderBase<T, S> oldWidget) {
     super.didUpdateWidget(oldWidget);
     if (oldWidget.stream != widget.stream) {
       if (_subscription != null) {
@@ -128,7 +136,18 @@ class _StreamResponderBaseState<T, S> extends State<StreamResponderBase<T, S>> {
   }
 }
 
-class StreamResponder<T> extends StreamResponderBase<T, AsyncSnapshot<T>> {
+
+/// A substitute to [StreamBuilder] that inhibits build when `null` is returned from
+/// the [AsyncWidgetBuilder]. This allows for a plethora of use cases like:
+///
+/// * Just doing nothing for a certain stream event
+/// * Showing a snackbar as a result of a stream event
+/// * Showing a dialog as a result of a stream event
+/// * Navigating to a new screen as a result of a stream event
+/// * Executing a function as a result of a stream event
+///
+/// From within the build specification of the builder
+class StreamResponder<T> extends _StreamResponderBase<T, AsyncSnapshot<T>> {
   /// Creates a new [StreamResponder] that builds itself based on the latest
   /// snapshot of interaction with the specified [stream] and whose build
   /// strategy is given by [builder].
@@ -145,6 +164,7 @@ class StreamResponder<T> extends StreamResponderBase<T, AsyncSnapshot<T>> {
         super(key: key, stream: stream);
 
   /// The build strategy currently used by this builder.
+  /// This can return null. Every time this returns null, a build will not take place.
   final AsyncWidgetBuilder<T> builder;
 
   /// The data that will be used to create the initial snapshot.
