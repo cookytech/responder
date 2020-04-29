@@ -1,5 +1,4 @@
 import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:responder/responder.dart';
 
@@ -23,19 +22,7 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   Timer timer;
-  int i;
-
-  @override
-  void initState() {
-    super.initState();
-    i = 0;
-    timer = Timer.periodic(Duration(milliseconds: 500), (timer) {
-      setState(() {
-        i = timer.tick;
-      });
-      if (i == 100) timer.cancel();
-    });
-  }
+  int i = 0;
 
   startCounting() {
     i = 0;
@@ -53,16 +40,6 @@ class _HomeScreenState extends State<HomeScreen> {
       body: Responder(
         builder: (context) {
           if (i % 10 == 0) {
-            timer.cancel();
-            Navigator.of(context).push(
-              MaterialPageRoute(
-                builder: (_) => Scaffold(
-                  body: Center(
-                    child: Text(i.toString()),
-                  ),
-                ),
-              ),
-            );
             return null;
           } else
             return WidgetBody(number: i);

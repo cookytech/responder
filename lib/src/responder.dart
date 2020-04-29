@@ -8,40 +8,44 @@
 
 import 'package:flutter/material.dart';
 
+
+/// A [Builder] class that caches it's subtree and returns the last subtree
+/// if the builder function returns null.
+/// This is useful **if you want to return null from the build function**
+///
+/// If the child is null in the beginning, the initial child will automatically become a [Container]
 class Responder extends StatefulWidget {
+
+  /// Instance of [WidgetBuilder], a function that takes [BuildContext] and returns a [Widget]
   final WidgetBuilder builder;
 
   const Responder({
     Key key,
     @required this.builder,
-  }) : super(key: key);
+  })  : assert(builder != null),
+        super(key: key);
 
   @override
   _ResponderState createState() => _ResponderState();
 }
 
+/// State object corresponding to responder, will cache the subree in a `_child`,
+/// and will return the result of:
+/// ```
+/// widget.builder() ?? _child ?? Container()
+/// ```
 class _ResponderState extends State<Responder> {
   Widget _child;
 
   WidgetBuilder get builder => widget.builder;
 
   @override
-  void initState() {
-    super.initState();
-  }
-
-  @override
-  void didChangeDependencies() {
-    super.didChangeDependencies();
+  Widget build(BuildContext context) {
     final temp = builder(context);
     if (temp != null)
       _child = temp;
     else if (_child == null) _child = Container();
-    setState(() {});
-  }
-
-  @override
-  Widget build(BuildContext context) {
     return _child;
   }
 }
+
