@@ -8,14 +8,12 @@
 
 import 'package:flutter/material.dart';
 
-
 /// A [Builder] class that caches it's subtree and returns the last subtree
 /// if the builder function returns null.
 /// This is useful **if you want to return null from the build function**
 ///
 /// If the child is null in the beginning, the initial child will automatically become a [Container]
 class Responder extends StatefulWidget {
-
   /// Instance of [WidgetBuilder], a function that takes [BuildContext] and returns a [Widget]
   final WidgetBuilder builder;
 
@@ -48,4 +46,3 @@ class _ResponderState extends State<Responder> {
     return _child;
   }
 }
-

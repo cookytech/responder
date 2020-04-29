@@ -1,4 +1,7 @@
-## [0.0.6] - 29th April, 2019
+## [0.1.0] - 29th April, 2020
+* adds detailed documentation and examples
+
+## [0.0.6] - 29th April, 2020
 * fixes to responder
 * adds API documentation
 * adds responder example

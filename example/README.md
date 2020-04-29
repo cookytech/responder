@@ -1,22 +1,8 @@
-# Responder
-Stateful builders that accept null returns and avoid rebuild. Useful for listening to streams or providers for things other than builds. Like pushing routes, showing a dialog, etc
+## Examples
+Examples for using the Respoder package within your flutter application.
 
 
-## Prologue
-It all began when we wanted to show a snackbar in response to a `Stream` event. We were greeted with red screens of death.
-Apparently we can not show snackbars when widgets are building, but we did not want to build/rebuild the widget tree.
-We just wanted to show the snackbar.
-
-
-## Method
-We took the code from `StreamBuilder` and modified the subscription to call setState only when something changes.
-We also cached the subtree so if builder returns null, we do nothing and inhibit the build. This resulted in a working as expected `StreamResponder` widget.
-
-We use provider package a lot and wanted to use the same things with StreamProvider, we have not yet been able to acheive the same results with
-`Responder` widget.
-
-
-### `Responder` -- Not Very Useful at the moment
+### `Responder`
 For the Responder class, we use it just like a `Builder` widget, if we return null from the 
 WidgetBuilder, the `Responder`  widget handles it properly.
 
@@ -33,7 +19,7 @@ body: Responder(
       ),
 ```
 
-### `StreamResponder` -- Working as Expected, Use with Caution
+### `StreamResponder`
 It all began when we wanted to show a snackbar in response to a `Stream` event. We were greeted with red screens of death.
 Apparently we can not show snackbars when widgets are building, but we did not want to build/rebuild the widget tree.
 We just wanted to show the snackbar.

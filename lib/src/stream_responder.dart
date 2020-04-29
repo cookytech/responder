@@ -66,7 +66,8 @@ abstract class _StreamResponderBase<T, S> extends StatefulWidget {
 }
 
 /// State for [StreamResponderBase].
-class _StreamResponderBaseState<T, S> extends State<_StreamResponderBase<T, S>> {
+class _StreamResponderBaseState<T, S>
+    extends State<_StreamResponderBase<T, S>> {
   StreamSubscription<T> _subscription;
   S _summary;
   Widget _child;
@@ -135,7 +136,6 @@ class _StreamResponderBaseState<T, S> extends State<_StreamResponderBase<T, S>> 
     }
   }
 }
-
 
 /// A substitute to [StreamBuilder] that inhibits build when `null` is returned from
 /// the [AsyncWidgetBuilder]. This allows for a plethora of use cases like:
