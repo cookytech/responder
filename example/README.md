@@ -6,7 +6,7 @@ Examples for using the Respoder package within your flutter application.
 For the Responder class, we use it just like a `Builder` widget, if we return null from the 
 WidgetBuilder, the `Responder`  widget handles it properly.
 
-Follow: (responder_example)[./responder_example] for a simple project
+Follow: [responder_example](./responder_example) for a simple project
 
 ```dart
 body: Responder(
@@ -24,7 +24,7 @@ It all began when we wanted to show a snackbar in response to a `Stream` event. 
 Apparently we can not show snackbars when widgets are building, but we did not want to build/rebuild the widget tree.
 We just wanted to show the snackbar.
 
-Follow: (stream_responder_example)[./stream_responder_example] for a simple project.
+Follow: [stream_responder_example](./stream_responder_example) for a simple project.
 ```dart
 return Scaffold(
       body: StreamResponder(
